@@ -1,0 +1,28 @@
+@main("Hexxagon") {
+<div id="loginForm">
+    <div id="scorebar">
+        <h5>Enter player names...</h5></br>
+        <div id="p1" class="namebox">
+            <img id="img1" class="playerimg" src='@routes.Assets.at("images/batman_small.png")' width="64px"/>
+            <input id="player1" class="playername" type="text" name="p1" placeholder="Batman"></br>
+        </div>
+        <div id="p2" class="namebox">
+            <img id="img2" class="playerimg" src='@routes.Assets.at("images/opponent_small.png")' width="64px"/>
+            <input id="player2" class="playername" type="text" name="p2" placeholder="Joker"></br>
+        </div>
+    </div>
+    <div style="text-align:center;"><button id="setPlayerNames" value="Start Hexxagon" class="btn btn-success">Start Game</button></div>
+</div>
+}
+
+<script>
+$("#setPlayerNames").click(function() {
+    var nameP1 = ($("#player1").val().length === 0) ? $("#player1").attr("placeholder") : $("#player1").val();
+    var nameP2 = ($("#player2").val().length === 0) ? $("#player2").attr("placeholder") : $("#player2").val();
+    var imgP1 = $("#img1").attr("src");
+    var imgP2 = $("#img2").attr("src");
+    console.log(nameP1);
+    console.log(nameP2);
+    location.href = "/hexxagon" + "/" + nameP1 + "/" + nameP2;
+});
+</script>

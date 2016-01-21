@@ -1,0 +1,31 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-signin/google-signin.html">
+<link rel="import" href="../bower_components/google-apis/google-client-api.html">
+
+<polymer-element name="custom-sign-in">
+
+  <template>
+    <google-signin
+      clientId="320068315136-e7u2o7f935srlnqvhnnh04502ur7m4pc.apps.googleusercontent.com"
+      scopes="profile"
+	  on-google-signin-success="{{signInSuccess}}">
+    </google-signin>  
+  </template>
+  
+  <script>
+    Polymer('custom-sign-in', {
+		signInSuccess: function() {	
+			gapi.client.load('oauth2', 'v2', function() {
+				var request = gapi.client.oauth2.userinfo.get();
+				request.execute(function (resp) {
+					var player1 = resp.name;
+			    	var player2 = "Opponent";
+			    	$("#player1").val(player1);
+			    	$("#player2").val(player2);	
+					$("#img1").attr("src", resp.picture);
+				});
+			});
+		}
+	});
+  </script>
+</polymer-element>

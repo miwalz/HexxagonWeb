@@ -1,0 +1,14 @@
+GET     /                           controllers.Application.index
+
+
+GET     /socket                     controllers.Hexxagon.socket
+
+
+
+
+GET		/hexxagon/:p1/:p2			controllers.Hexxagon.gameNew(p1: String, p2:String)
+
+POST	/hexxagon/input/:x/:y    	controllers.Hexxagon.gameInput(x: Int, y: Int)
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+GET     /test                       controllers.Hexxagon.test

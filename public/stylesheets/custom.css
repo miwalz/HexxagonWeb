@@ -1,0 +1,209 @@
+body {
+	background-color: #02070b;
+}
+
+.namebox {
+	margin: auto;
+	width: 70%;
+	height: 60px;
+}
+
+.playerimg {
+	float: left;
+	margin: -10px 0 0 0;
+	padding-right: 8px;
+}
+
+.playername {
+	width: 280px;
+	color: #000000;
+	float: left;
+	text-align: center;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #888888;
+	border: 1px solid #282828;
+	border-radius: 4px;
+	height: 32px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow
+		ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out
+		.15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.jumbotron {
+	background: url("../images/space.jpg");
+	background-size: 100% 110%;
+	border: 3px solid #0c0f1a;
+	min-height: 561px;
+	padding: 0 0 0 0 !important;
+}
+
+#scorebar {
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 35px;
+	width: 550px;
+	padding: 5px;
+	padding-bottom: 25px;
+	color: #ffffff;
+	border: 2px solid;
+	border-radius: 10px;
+	border-color: #081926;
+	background-color: rgba(2, 7, 11, 0.7);
+}
+
+#scorebarrefresh {
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	height: 55px;
+	width: 610px;
+	padding: 5px;
+	font-size: 26px;
+	color: #ffffff;
+	border: 2px solid;
+	border-radius: 10px;
+	border-color: #081926;
+	background-color: rgba(2, 7, 11, 0.7);
+}
+
+.inputheader {
+	font-size: 22px;
+	width: 220px;
+	height: 40px;
+	padding: 5px;
+}
+
+#board {
+	position: relative;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+#shoutbox {
+	position: absolute;
+	display: none;
+	padding: 10px 10px 10px 15px;
+	bottom: 10px;
+	font-size: 17px;
+	text-align: left;
+	left: 10px;
+	color: #bed3e8;
+	min-width: 200px;
+	min-height: 10px;
+	border: 2px solid #152129;
+	background: rgba(20, 31, 39, 0.8);
+	border-radius: 15px;
+	font-size: 19px;
+}
+
+#shoutbox p {
+	display: none;
+	font-size: 16px;
+}
+
+#plusbtn.demo {
+	padding: 10px;
+	background: #fff;
+	cursor: pointer;
+	line-height: 20px;
+	border: 1px solid #e6e6e6;
+	border-radius: 4px;
+}
+
+#plusbtn.demo .icon {
+	width: 40px;
+	height: 40px;
+	display: inline-block;
+	background: url(@ routes.Assets.at ( "images/btn_icons_sprite.png"))
+		transparent 0 -40px no-repeat;
+}
+
+#plusbtn.demo:hover {
+	background-color: #cc3732;
+	color: #fff;
+	border: #dd4b39;
+}
+
+#plusbtn.demo:hover .icon {
+	background: url(@ routes.Assets.at ( "images/btn_icons_sprite.png"))
+		transparent 0 0px no-repeat;
+}
+
+.label {
+	color: #02070b;
+	font-weight: normal;
+	font-size: 12pt;
+}
+
+#newgame {
+	text-align: center;
+	margin-bottom: 45px;
+}
+
+#overbar {
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 35px;
+	/*height: 55px;*/
+	width: 550px;
+	padding: 5px;
+	padding-bottom: 15px;
+	/*font-size: 26px;*/
+	color: #ffffff;
+	border: 2px solid;
+	border-radius: 10px;
+	border-color: #081926;
+	background-color: rgba(2, 7, 11, 0.7);
+}
+
+#splayer1 {
+	font-size: 21px;
+	float: left;
+	width: 195px;
+	height: 40px;
+	padding: 5px;
+	text-align: right;
+	color: #8967bd;
+	text-decoration: underline;
+}
+
+#score {
+	font-weight: bold;
+	float: left;
+	width: 100px;
+	height: 40px;
+	padding: 2px;
+}
+
+#splayer2 {
+	font-size: 21px;
+	float: left;
+	width: 195px;
+	height: 40px;
+	padding: 5px;
+	text-align: left;
+	color: #77ba0e;
+}
+
+#gameImgP1 {
+	float: left;
+	margin: 0 0 0 10px;
+	padding-right: 0;
+	width: 40px;
+}
+
+#gameImgP2 {
+	float: left;
+	margin: 0 10px 0 0px;
+	padding-right: 0px;
+	width: 40px;
+}

@@ -1,0 +1,88 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/google-signin/google-signin.html">
+<link rel="import" href="../bower_components/google-apis/google-client-api.html">
+
+<script type="text/javascript">
+
+</script>
+
+<polymer-element name="post-plus-message">
+<template>
+	<button
+	  id="share"
+	  class="g-interactivepost"
+	  data-contenturl="http://www.rek7.de/polyhexa"
+	  data-contentdeeplinkid="/pages"
+	  data-clientid="320068315136-e7u2o7f935srlnqvhnnh04502ur7m4pc.apps.googleusercontent.com"
+	  data-cookiepolicy="single_host_origin"
+	  data-prefilltext="Play Hexxagon with your friends!"
+	  data-calltoactionlabel="CHALLENGE"
+	  data-calltoactionurl="http://www.rek7.de/polyhexa"
+	  data-calltoactiondeeplinkid="/">
+	  Tell your friends
+	</button>
+	<button id="sharePost" on-tap="{{shareFunc}}">Share</button>
+</template>
+  
+  <script>
+  	/*  (function() {
+	   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	   po.src = 'https://apis.google.com/js/client:plusone.js';
+	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	 })();*/
+    Polymer('post-plus-message', {
+		shareFunc: function() {
+			console.log("test");
+			 var options = {
+				contenturl: 'http://www.rek7.de/polyhexa',
+				contentdeeplinkid: '/pages',
+				clientid: '320068315136-e7u2o7f935srlnqvhnnh04502ur7m4pc.apps.googleusercontent.com',
+				cookiepolicy: 'single_host_origin',
+				prefilltext: 'Hai happy friday',
+				calltoactionlabel: 'CHALLENGE',
+				calltoactionurl: 'http://www.rek7.de/polyhexa',
+				calltoactiondeeplinkid: '/'
+			  };
+			  // Call the render method when appropriate within your app to display
+			  // the button.
+			  gapi.interactivepost.go(options);
+			
+		}
+	});
+  </script>
+</polymer-element>
+
+<!--
+
+<script type="text/javascript">
+	  (function() {
+	   var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	   po.src = 'https://apis.google.com/js/client:plusone.js';
+	   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	 })();
+</script>
+
+<polymer-element name="post-plus-message">
+
+<template>
+	<button
+	  class="g-interactivepost"
+	  data-contenturl="http://www.rek7.de/polyhexa"
+	  data-contentdeeplinkid="/pages"
+	  data-clientid="320068315136-e7u2o7f935srlnqvhnnh04502ur7m4pc.apps.googleusercontent.com"
+	  data-cookiepolicy="single_host_origin"
+	  data-prefilltext="Play Hexxagon with your friends!"
+	  data-calltoactionlabel="CHALLENGE"
+	  data-calltoactionurl="http://www.rek7.de/polyhexa"
+	  data-calltoactiondeeplinkid="/">
+	  Tell your friends
+	</button>
+<template>
+
+<script>
+    Polymer('post-plus-message', {
+		hello: ""
+	}
+</script>
+
+-->

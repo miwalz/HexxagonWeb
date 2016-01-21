@@ -1,0 +1,49 @@
+@(title: String)(content: Html)
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="The number one game to play in space!">
+    <meta name="author" content="Michael Walz">
+    <link rel='shortcut icon' type='image/png' href='@routes.Assets.at("images/favicon.png")'>
+    <title>@title</title>
+
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/bootstrap.min.css")'>
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/jumbotron-narrow.css")'>
+    <link rel="stylesheet" href='@routes.Assets.at("stylesheets/jquery-ui.css")'>
+    <link rel='stylesheet' href='@routes.Assets.at("stylesheets/custom.css")'>
+
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src='@routes.Assets.at("javascripts/jquery-ui.js")'></script>
+    <script src='@routes.Assets.at("javascripts/jquery.popupoverlay.js")'></script>
+    <script src='@routes.Assets.at("javascripts/hexxagon-websocket.js")'></script>
+    <script src='@routes.Assets.at("javascripts/hexagon.js")'></script>
+    <script src='@routes.Assets.at("javascripts/board.js")'></script>
+    <script src='@routes.Assets.at("javascripts/typed.js")'></script>
+    <script src='@routes.Assets.at("javascripts/game.js")'></script>
+</head>
+<body>
+<div class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <a href="/" class="navbar-brand">Hexxagon</a>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/" target="_blank">Source Code</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="jumbotron" style="margin-top:60px;">
+        @content
+    </div>
+    <div class="footer">
+        <p>&copy; Michael Walz</p>
+    </div>
+</div>
+</body>
+</html>

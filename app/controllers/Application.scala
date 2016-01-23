@@ -12,13 +12,14 @@ import scala.util.control.NonFatal
 
 class Application extends Controller with Reactor {
 
-  implicit val jsonFrame: FrameFormatter[JsValue] = implicitly[FrameFormatter[String]].transform(Json.stringify, { text =>
-    try {
-      Json.parse(text)
-    } catch {
-      case NonFatal(e) => Json.obj("error" -> e.getMessage)
-    }
-  })
+  implicit val jsonFrame: FrameFormatter[JsValue] =
+    implicitly[FrameFormatter[String]].transform(Json.stringify, { text =>
+      try {
+        Json.parse(text)
+      } catch {
+        case NonFatal(e) => Json.obj("error" -> e.getMessage)
+      }
+    })
 
   val controller = HexxagonController()
 
@@ -31,7 +32,7 @@ class Application extends Controller with Reactor {
     Ok(views.html.board())
   }
 
-  def socket() = WebSocket.acceptWithActor[JsValue, JsValue] { request => out =>
+  def socket = WebSocket.acceptWithActor[JsValue, JsValue] {request => out =>
     WebSocketActor.props(controller, out)
   }
 

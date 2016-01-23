@@ -4,11 +4,11 @@
         <h5>Enter player names...</h5></br>
         <div id="p1" class="namebox">
             <img id="img1" class="playerimg" src='@routes.Assets.at("images/batman_small.png")' width="64px"/>
-            <input id="player1" class="playername" type="text" name="p1" placeholder="Batman"></br>
+            <input id="player1" class="playername" type="text" name="p1" placeholder="Batman" /></br>
         </div>
         <div id="p2" class="namebox">
             <img id="img2" class="playerimg" src='@routes.Assets.at("images/opponent_small.png")' width="64px"/>
-            <input id="player2" class="playername" type="text" name="p2" placeholder="Joker"></br>
+            <input id="player2" class="playername" type="text" name="p2" placeholder="Joker" /></br>
         </div>
     </div>
     <div style="text-align:center;"><button id="setPlayerNames" value="Start Hexxagon" class="btn btn-success">Start Game</button></div>
@@ -21,8 +21,6 @@ $("#setPlayerNames").click(function() {
     var nameP2 = ($("#player2").val().length === 0) ? $("#player2").attr("placeholder") : $("#player2").val();
     var imgP1 = $("#img1").attr("src");
     var imgP2 = $("#img2").attr("src");
-    console.log(nameP1);
-    console.log(nameP2);
-    location.href = "/hexxagon" + "/" + nameP1 + "/" + nameP2;
+    location.href = "/hexxagon" + "/" + encodeURIComponent(nameP1) + "/" + encodeURIComponent(nameP2);
 });
 </script>

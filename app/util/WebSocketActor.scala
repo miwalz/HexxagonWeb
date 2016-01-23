@@ -1,9 +1,11 @@
 package util
 
 import akka.actor.{Actor, ActorRef, Props}
-import de.htwg.mps.hexxagon.controller.{BoardChanged, GameOver, HexxagonController}
+import de.htwg.mps.hexxagon.controller.HexxagonController
 import de.htwg.mps.hexxagon.model.Player
-import play.api.libs.json.{JsBoolean, Json, JsValue}
+import de.htwg.mps.hexxagon.util.{GameOver, BoardChanged}
+import play.api.libs.json._
+import play.api.libs.json.{Json, JsValue}
 
 import scala.swing.Reactor
 
@@ -13,27 +15,29 @@ object WebSocketActor {
 
 class WebSocketActor(controller: HexxagonController, out: ActorRef) extends Actor with Reactor {
 
-  case class Field(x: String, y: String, f: String)
+  case class Field(x: Int, y: Int, f: String)
 
   implicit val fieldFormat = Json.format[Field]
 
   listenTo(controller)
   reactions += {
-    case e: BoardChanged => out ! gameToJson
-    case e: GameOver => out ! "over"
+    case e: BoardChanged => out ! gameToJson(false)
+    case e: GameOver => out ! gameToJson(true)
   }
 
   def receive = {
-    case input: JsValue => {
-      val x = (input \ "x").validate[Int].getOrElse(0)
-      val y = (input \ "y").validate[Int].getOrElse(0)
-      controller.input(x, y)
+    case input: JsValue => input match {
+      case JsString("init") => controller.init(controller.p1.name, controller.p2.name)
+      case _ =>
+        val x = (input \ "x").validate[Int].getOrElse(0)
+        val y = (input \ "y").validate[Int].getOrElse(0)
+        controller.input(x, y)
     }
   }
 
-  def gameToJson = {
+  def gameToJson(gameover: Boolean) = {
     def playerToJson(player: Player) = {
-      val active = if (controller.currPlayerIndex == player.index) true else false
+      val active = controller.currPlayerIndex == player.index
       Json.obj(
         "name" -> player.name,
         "score" -> player.score,
@@ -45,7 +49,8 @@ class WebSocketActor(controller: HexxagonController, out: ActorRef) extends Acto
     val player2 = playerToJson(controller.p2)
     val gameState = Json.obj(
       "fields" -> fieldList,
-      "players" -> Json.arr(player2, player1)
+      "players" -> Json.arr(player1, player2),
+      "gameOver" -> JsBoolean(gameover)
     )
     gameState
   }

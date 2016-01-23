@@ -1,28 +1,18 @@
-@(hexxagon: de.htwg.mps.hexxagon.controller.HexxagonController)
-
-@import de.htwg.mps.hexxagon.model.Filling.Filling
+@main("Hexxagon") {
 
 <div id="scorebarrefresh">
-    <div id="splayer1"></div>
+    <div id="nameP1"></div>
     <img id="gameImgP1" src='@routes.Assets.at("images/batman_small.png")'/>
     <div id="score">
-        @hexxagon.p1.score : @hexxagon.p2.score
+        <span id="scoreP1"></span> : <span id="scoreP2"></span>
     </div>
     <img id="gameImgP2" src='@routes.Assets.at("images/opponent_small.png")'/>
-    <div id="splayer2"></div>
+    <div id="nameP2"></div>
 </div></br>
 
 <canvas id="HexCanvas" width="560" height="680"></canvas>
 
-<script>
-    var hexagonGrid = new HexagonGrid("HexCanvas", 40);
-    @for(field <- hexxagon.getFieldsAsList) {
-        hexagonGrid.drawHexAtColRow(@field._1, @field._2, "@field._3");
-    }
-	var nameP1 = "@hexxagon.p1.name";
-	var nameP2 = "@hexxagon.p2.name";
-	$("#splayer1").text(nameP1.substr(0,15));
-	$("#splayer2").text(nameP2.substr(0,15));
+<script src='@routes.Assets.at("javascripts/hexagon-grid.js")'></script>
+<script src='@routes.Assets.at("javascripts/hexagon-game.js")'></script>
 
-
-</script>
+}

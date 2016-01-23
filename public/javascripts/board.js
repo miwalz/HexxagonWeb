@@ -1,5 +1,0 @@
-Board = {
-    update: function () {
-        
-    }
-};

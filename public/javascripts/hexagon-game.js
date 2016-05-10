@@ -53,7 +53,7 @@ WebSocket = {
     getWebSocket: (function () {
         var ws;
         if (!ws) {
-            ws = new WebSocket("wss://" + location.host + "/socket");
+            ws = new WebSocket("ws://" + location.host + "/socket");
             ws.onopen = function (evt) {
                 console.log("WebSocket connection established.");
                 Board.init();
